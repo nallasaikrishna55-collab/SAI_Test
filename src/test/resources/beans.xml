@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+          https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="utilities, steps, Pages,api,appManager"/>
+
+    <!-- Load application.properties -->
+    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:properties/application.properties</value>
+                <value>classpath:properties/login.properties</value>
+                <value>classpath:properties/messages.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Factory for creating WebDriver -->
+    <bean id="webDriverManager"
+          class="appManager.webDriverManager"/>
+
+    <!-- WebDriver: NEW instance per scenario, quit() after scenario -->
+    <bean id="webDriver"
+          factory-bean="webDriverManager"
+          factory-method="createDriver"
+          scope="cucumber-glue"
+          destroy-method="quit"/>
+
+    <!-- Common base page: inject driver once per scenario -->
+    <bean id="basePage" abstract="true" scope="cucumber-glue">
+        <property name="driver" ref="webDriver"/>
+    </bean>
+
+    <bean id="helperBase" class="appManager.HelperBase" parent="basePage" scope="cucumber-glue"/>
+    <bean id="googleHomePage" class="Pages.GoogleHomePage" parent="basePage" scope="cucumber-glue"/>
+    <bean id="bankHomePage" class="Pages.BankHomePage" parent="basePage" scope="cucumber-glue"/>
+
+</beans>

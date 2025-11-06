@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="8.867" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="ParaBank" name="login ParaBank" time="5.683">
+<system-out><![CDATA[
+Given Open ParaBank application.............................................passed
+When Login to application...................................................passed
+Then Verify user successfully logged into application.......................passed
+]]></system-out>
+</testcase>
+</testsuite>
