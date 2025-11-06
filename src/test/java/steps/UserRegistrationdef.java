@@ -3,7 +3,7 @@ package steps;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 
-public class UserRegistrationdef extends BaseSteps {
+public class UserRegistrationdef extends TestBase {
 
 
     @When("User click on register")
@@ -21,10 +21,10 @@ public class UserRegistrationdef extends BaseSteps {
         bankHomePage.clickOnRegistrationBtn();
     }
 
-    @Then("User is created or not created successfully {string}")
-    public void user_is_created_or_not_created_successfully(String message) {
+    @Then("User is created or not created successfully")
+    public void user_is_created_or_not_created_successfully() {
         String actualMsg = bankHomePage.getWelcomeText();
-        Assert.assertEquals("User not Created ", messageRepository.getAccCreatedMsg(), actualMsg);
+        Assert.assertEquals("User not Created ", messageRepository.getAccCreatedMsg(), "actualMsg");
 
     }
 

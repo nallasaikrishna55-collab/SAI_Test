@@ -23,7 +23,7 @@
 
     <!-- Factory for creating WebDriver -->
     <bean id="webDriverManager"
-          class="appManager.webDriverManager"/>
+          class="appManager.WebDriverManager"/>
 
     <!-- WebDriver: NEW instance per scenario, quit() after scenario -->
     <bean id="webDriver"

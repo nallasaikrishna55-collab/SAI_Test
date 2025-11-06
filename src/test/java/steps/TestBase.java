@@ -11,7 +11,7 @@ import utilities.MessageRepository;
 
 @CucumberContextConfiguration
 @ContextConfiguration(locations = "classpath:beans.xml")
-public class BaseSteps {
+public class TestBase {
 
     @Autowired
     protected WebDriver driver;

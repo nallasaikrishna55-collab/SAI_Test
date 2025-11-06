@@ -3,7 +3,7 @@ package steps;
 import io.cucumber.java.en.*;
 import static org.junit.Assert.*;
 
-public class BankLogin extends BaseSteps {
+public class BankLogin extends TestBase {
 
 
     @Given("Open ParaBank application")

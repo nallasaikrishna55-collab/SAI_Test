@@ -4,7 +4,7 @@ import io.cucumber.java.en.*;
 import org.junit.Assert;
 
 
-public class GoogleSteps extends BaseSteps {
+public class GoogleSteps extends TestBase {
 
     @Given("I open Google homepage")
     public void iOpenGoogleHomepage() {

@@ -103,6 +103,7 @@ public class BankHomePage extends HelperBase {
 
         if (appPassWord != null)
             passWord = appPassWord;
+
         enterText(LocatorType.XPATH, xpathPassWord, passWord);
         clickOnBtn(LocatorType.CSS, submitBtn);
     }

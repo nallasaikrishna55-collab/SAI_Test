@@ -8,11 +8,10 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "steps",
-        plugin = {"pretty",                       // console BDD output
-                "summary",                      // console summary
-                "html:target/cucumber.html",    // HTML BDD report
-                "json:target/cucumber.json",    // JSON report
-                "junit:target/cucumber.xml" },
+        plugin = {"pretty",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
+                 },
         tags = "@Bank",
         monochrome = true,
         dryRun = false
