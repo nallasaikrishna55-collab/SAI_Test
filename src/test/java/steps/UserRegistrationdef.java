@@ -24,7 +24,7 @@ public class UserRegistrationdef extends TestBase {
     @Then("User is created or not created successfully")
     public void user_is_created_or_not_created_successfully() {
         String actualMsg = bankHomePage.getWelcomeText();
-        Assert.assertEquals("User not Created ", messageRepository.getAccCreatedMsg(), "actualMsg");
+        Assert.assertEquals("User not Created ", messageRepository.getAccCreatedMsg(), actualMsg);
 
     }
 
