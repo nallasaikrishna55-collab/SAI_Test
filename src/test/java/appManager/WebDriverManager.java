@@ -4,6 +4,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
 import java.awt.*;
 
@@ -14,20 +16,15 @@ public class WebDriverManager {
     // This method creates the browser instance once
     public WebDriver createDriver() {
         if (driver == null) {
-            io.github.bonigarcia.wdm.WebDriverManager.chromedriver().setup();
+            io.github.bonigarcia.wdm.WebDriverManager.edgedriver().setup();
 
-            ChromeOptions options = new ChromeOptions();
+            EdgeOptions options = new EdgeOptions();
             options.addArguments("--remote-allow-origins=*");
             options.addArguments("--disable-notifications");
             options.addArguments("--disable-infobars");
             options.addArguments("--start-fullscreen"); // macOS prefers this
             String os = System.getProperty("os.name").toLowerCase();
-            if (os.contains("win")) {
-                options.setBinary("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
-            } else if (os.contains("mac")) {
-                options.setBinary("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome");
-            }
-            driver = new ChromeDriver(options);
+            driver = new EdgeDriver(options);
 
             try {
                 // extra safety delay — macOS takes time to focus window
