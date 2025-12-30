@@ -21,7 +21,12 @@ public class WebDriverManager {
             options.addArguments("--disable-notifications");
             options.addArguments("--disable-infobars");
             options.addArguments("--start-fullscreen"); // macOS prefers this
-
+            String os = System.getProperty("os.name").toLowerCase();
+            if (os.contains("win")) {
+                options.setBinary("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
+            } else if (os.contains("mac")) {
+                options.setBinary("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome");
+            }
             driver = new ChromeDriver(options);
 
             try {
